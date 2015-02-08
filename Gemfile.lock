@@ -1,3 +1,14 @@
+GIT
+  remote: git://github.com/ready4god2513/rails-erd.git
+  revision: 3c0e0b93452392651df7daaf8678b2bb9aa8faf1
+  branch: rails-4.2-support-fix
+  specs:
+    rails-erd (1.1.1)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      choice (~> 0.1.6)
+      ruby-graphviz (~> 1.0.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -50,6 +61,7 @@ GEM
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
       slop (~> 3.6)
+    choice (0.1.7)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -120,6 +132,7 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
+    ruby-graphviz (1.0.9)
     sass (3.4.11)
     sass-rails (5.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -169,6 +182,7 @@ DEPENDENCIES
   jquery-rails
   pg
   rails (= 4.2.0)
+  rails-erd!
   rails_12factor
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
