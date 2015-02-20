@@ -1,0 +1,10 @@
+
+<h1><%= @question.title %></h1>
+          Resolved:<% if @question.resolved%>
+          <input type="checkbox" name="resolved" value = '0' disabled checked/>
+          <% else %>
+          <input type="checkbox" name="resolved" value = '0' disabled  />
+          <%end %>
+<p><%= @question.body %></p>
+<%= link_to "Edit", edit_question_path(@question), class: 'btn btn-success' %>
+<%= link_to "Delete", question_path(@question), class: 'btn btn-danger' , method: :delete %>

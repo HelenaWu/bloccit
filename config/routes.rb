@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :questions
+
   resources :posts #resources create routes for all CRUD action
 
   get 'about' => 'welcome#about'
