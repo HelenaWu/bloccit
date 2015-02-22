@@ -35,7 +35,7 @@ class QuestionsController < ApplicationController
       redirect_to @question
     else      
       flash[:error] = "There was an error editing the question. Please try again."
-      render :new
+      render :edit
     end
   end
 
@@ -46,7 +46,7 @@ class QuestionsController < ApplicationController
       redirect_to questions_path
     else      
       flash[:error] = "There was an error deleting the question. Please try again."
-      render :new
+      render :show
     end
   end
 

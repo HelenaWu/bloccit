@@ -6,11 +6,7 @@
         <h4 class="media-heading">
 
         <%= link_to question.title, question %> 
-          Resolved:<% if question.resolved%>
-          <input type="checkbox" name="resolved" value = '0' disabled checked/>
-          <% else %>
-          <input type="checkbox" name="resolved" value = '0' disabled  />
-          <%end %>
+          Resolved:<%= check_box_tag 'Resolved', 0, question.resolved?, disabled: true %>
         </h4>
 
       </div>
