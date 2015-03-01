@@ -12,7 +12,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(params.require(:post).permit(:title, :body))
+#    @post = Post.new(params.require(:post).permit(:title, :body))
+    #now create user-specific posts
+    @post = current_user.posts.build(params.require(:post).permit(:title, :body))
     # @post2 = Post.new(params.require(:post2).permit(:title, :body))
     # @post3 = Post.new(title: params[:post][:title], body: params[:post][:body])
     # @post.save
