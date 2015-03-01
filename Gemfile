@@ -8,13 +8,14 @@ gem 'rails', '4.2.0'
 gem 'bootstrap-sass'
 gem 'faker'
 gem 'devise'
+gem 'figaro', '1.0'
 
 group :production do
   gem 'pg'
   gem 'rails_12factor'
 end
 group :development do
-  gem 'rails-erd', github: 'ready4god2513/rails-erd', branch: 'rails-4.2-support-fix'
+  gem 'rails-erd'
   gem 'sqlite3'
 end
 
