@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+
   devise_for :users
   resources :questions
 
-  resources :posts #resources create routes for all CRUD action
-
+  resources :topics do 
+    resources :posts, except: [:index]
+  end
   get 'about' => 'welcome#about'
 
   root to: 'welcome#index'
