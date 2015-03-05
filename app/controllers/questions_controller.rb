@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
 
   def create
 
-    @question = Question.new(params[:question].permit(:title, :body, :resolved))
+    @question = Question.new(question_params)
 
     if @question.save
       flash[:notice] = "Post was saved."
@@ -30,7 +30,7 @@ class QuestionsController < ApplicationController
 
   def update
     @question = Question.find(params[:id])
-    if @question.update_attributes(params[:question].permit(:title, :body, :resolved))
+    if @question.update_attributes(question_params)
       flash[:notice] = "Question was saved."
       redirect_to @question
     else      
@@ -50,4 +50,8 @@ class QuestionsController < ApplicationController
     end
   end
 
+private
+def question_params
+  params[:question].permit(:title, :body, :resolved)
+end
 end
