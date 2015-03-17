@@ -1,0 +1,12 @@
+<p>  
+  <%= comment.body %>
+  <small>
+    <em>  By: 
+      <% if comment.user.present? %>
+        <%= comment.user.name %>
+      <% else %>
+        Anonymous
+      <% end %>
+    </em>
+  </small>
+</p>
