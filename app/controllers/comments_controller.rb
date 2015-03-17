@@ -1,5 +1,9 @@
 class CommentsController < ApplicationController
-
+  #necessary?
+  def new
+    @comment  = Comment.new
+    authorize @comment
+  end
   def create
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:post_id])
@@ -9,6 +13,8 @@ class CommentsController < ApplicationController
     if (current_user.present?)
       @comment.user = current_user
     end
+    authorize @comment
+
     if @comment.save
       flash[:notice] = "comment was saved successfully."
       redirect_to topic_post_url(@topic, @post)
