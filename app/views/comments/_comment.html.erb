@@ -8,18 +8,23 @@
     <small>
       <% if comment.user.present? %>
       <%= comment.user.name %> commented <%= time_ago_in_words(comment.created_at) %> ago
+      <% else %>
+      Commented <%= time_ago_in_words(comment.created_at) %> ago
       <% end %>
       <% if policy(comment).destroy? %>
-        <%= link_to "Delete", [@topic, @post, comment], method: :delete %>
+        <%= link_to "Delete", [@post, comment], method: :delete %>
       <% end%>
-      <p><%= comment.body %>
+      
+      <p>
+      <%= comment.body %>
       <em>  By: 
         <% if comment.user.present? %>
           <%= comment.user.name %>
         <% else %>
           Anonymous
         <% end %>
-      </em><p>
+      </em>
+      <p>
     </small>
 
   </div>
