@@ -1,4 +1,5 @@
 class Post < ActiveRecord::Base
+  include Paginate
   has_many :comments, dependent: :destroy
   belongs_to :user
   belongs_to :topic
@@ -9,5 +10,7 @@ class Post < ActiveRecord::Base
   validates :body, length: { minimum: 20 }, presence: true
   validates :topic, presence: true
   validates :user, presence: true
+
+  
   
 end
