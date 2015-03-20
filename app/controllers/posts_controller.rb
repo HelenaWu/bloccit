@@ -6,9 +6,12 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @topic = Topic.find(params[:topic_id])
-    @comment = Comment.new
-    @comments = Comment.where("post_id = ?", params[:id])
+    @topic = @post.topic
+
+    @comment = Comment.new #if policy(@comment).new?  error: unable to find policy for nil class
+    authorize @comment, :new?
+    @comments = @post.comments
+
   end
 
   def new
