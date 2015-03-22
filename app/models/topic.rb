@@ -1,5 +1,5 @@
 class Topic < ActiveRecord::Base
-  include Paginate
+  # include Paginate
   has_many :posts, dependent: :destroy
   validates :name, length: {minimum: 5}
 

@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  include Paginate
+  # include Paginate
   has_many :comments, dependent: :destroy
   belongs_to :user
   belongs_to :topic
