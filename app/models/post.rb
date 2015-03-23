@@ -26,7 +26,7 @@ class Post < ActiveRecord::Base
   end
   
   def update_rank
-    age_in_days = (created_at - Time.new(1970,1,1))/(60*60*24)
+    age_in_days = (self.created_at - Time.new(1970,1,1))/(60*60*24)
     new_rank = points + age_in_days
     update_attribute(:rank, new_rank)
   end
@@ -34,6 +34,17 @@ class Post < ActiveRecord::Base
 
   def create_vote
     #user.votes.create(..) does work here? (error: parent not saved)
-    votes.create(value: 1, post: self)
+    user.votes.create(value: 1, post: self)
+  end
+
+  def save_with_initial_vote
+    result = false
+    ActiveRecord::Base.transaction do
+      #why do we need to check for self.valid? here but not when it was in posts_controller?
+      result = (self.save && self.valid?)
+      self.create_vote
+    end   
+
+    return result
   end
 end
