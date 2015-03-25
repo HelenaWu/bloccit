@@ -1,5 +1,5 @@
 module ApplicationHelper
-  @@per_page_max = 0
+  # per_page_max = 0
 
   def form_group_tag(errors, &block)
     if errors.any?

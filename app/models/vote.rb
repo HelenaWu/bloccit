@@ -8,7 +8,7 @@ class Vote < ActiveRecord::Base
   private 
   def update_post
     #Just confirming, can't update_post if post hasn't been created right?
-    if (post.created_at)
+    if (post)
       post.update_rank
     end
   end

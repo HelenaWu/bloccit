@@ -1,11 +1,11 @@
 class VotesController < ApplicationController
   before_action :load_post_and_vote
   def up_vote
-    update_vote!("1")
+    update_vote!(1)
   end
 
   def down_vote
-    update_vote!("-1")
+    update_vote!(-1)
   end
 
   private
@@ -17,9 +17,9 @@ class VotesController < ApplicationController
   def update_vote!(new_value)
    if @vote
       authorize @vote, :update?
-      @vote.update_attribute(:value, new_value.to_i)
+      @vote.update_attribute(:value, new_value)
     else
-      @vote = current_user.votes.build(value: new_value.to_i, post: @post)
+      @vote = current_user.votes.build(value: new_value, post: @post)
       authorize @vote, :create?
       @vote.save
     end

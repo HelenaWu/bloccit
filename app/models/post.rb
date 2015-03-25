@@ -20,9 +20,7 @@ class Post < ActiveRecord::Base
     votes.where(value: -1).count
   end
   def points
-    up = self.up_votes
-    down = -self.down_votes
-    up + down
+    votes.sum(:value)
   end
   
   def update_rank
@@ -33,8 +31,9 @@ class Post < ActiveRecord::Base
 
 
   def create_vote
-    #user.votes.create(..) does work here? (error: parent not saved)
-    user.votes.create(value: 1, post: self)
+    #for some reason user.votes.create(..) does work here, so adding user in param field
+    # (error: parent not saved)?
+    votes.create(value: 1, post: self, user: user)
   end
 
   def save_with_initial_vote
