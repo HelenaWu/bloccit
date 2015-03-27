@@ -73,11 +73,19 @@ moderator.save
 member = User.new(
   name: 'Member User',
   email: 'member@example.com',
-  password: 'helloworld',
+  password: 'helloworld'
 )
 member.skip_confirmation!
 member.save
 
+me = User.new(
+  name: "Helena", 
+  email: 'helena.wu87@gmail.com', 
+  password: 'helloworld',
+  role: 'admin'
+)
+me.skip_confirmation!
+me.save
 
 puts "Seed finished"
 puts "#{User.count} users created"
