@@ -7,11 +7,11 @@ describe Comment do
     before do
       @post = associated_post
       @user = authenticated_user
-      @comment  = Comment.new(body: 'My comment', post: @post, user_id: 10000)
+      @comment  = Comment.build(body: 'My comment', post: @post, user_id: 10000)
     end
 
     it "sends an email to users who have favourited the post" do
-      @user.favorites.where(post:@post).create
+      @user.favorites.where(post: @post).create
 
       allow(FavoriteMailer)
         .to receive(:new_comment)
