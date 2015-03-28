@@ -9,7 +9,7 @@ module Paginate
       per_page = options[:per_page]
       page = (options[:page] || 0).to_i
 
-      return self.limit(per_page).offset(page*per_page)
+      return self.limit(per_page).offset(page * per_page)
     end
   end
 end

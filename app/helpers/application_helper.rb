@@ -1,5 +1,4 @@
 module ApplicationHelper
-  # per_page_max = 0
 
   def form_group_tag(errors, &block)
     if errors.any?
@@ -17,26 +16,27 @@ module ApplicationHelper
   end
 
   # def will_paginate(results)
-  #   # next_page = (params[:page] || 0).to_i + 1
-  #   # link_to "Next", "?page=#{next_page}"
-  #   result = ""
-  #   if results.length > @@per_page_max
-  #     @@per_page_max = results.length
+  #   result= ""
+  #   if results.empty?
+  #     total_count = 0
+  #   else
+  #     model_class = results.first.class
+  #     total_count = model_class.count
   #   end
   #   curr_page = (params[:page] || 0).to_i
+  #   per_page = 10 #how to get per_page dynamically?
+  #   total_pages = total_count/per_page
   #   next_page = curr_page + 1
+  #   prev_page = curr_page - 1
 
-  #   if results.length >= @@per_page_max 
+  #   if curr_page < total_pages
   #     result = "#{link_to 'Next', "?page=#{next_page}"}"  
-  #     if curr_page > 0
-  #       result += "|"
-  #     end
-  #   end
+  #    end
 
-  #   if curr_page > 0
-  #     prev_page = curr_page - 1
+  #   if prev_page >0
   #     result = result + " #{link_to "Prev", "?page=#{prev_page}"}"
-  #   end   
+  #   end
+   
   #   return result.html_safe
      
   # end

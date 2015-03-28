@@ -6,7 +6,8 @@ describe FavoritesController do
 
   before do
     @post = associated_post
-    @user = authenticated_user
+    #Adding a new email address, default getting: "email has already been taken" error
+    @user = authenticated_user(email: 'email#{rand}@example.com')
     sign_in @user
   end
 
@@ -14,7 +15,7 @@ describe FavoritesController do
     it "creates a favorite for the current user and specified post" do
       expect(@user.favorites.find_by_post_id(@post.id)).to be_nil
       post :create, {post_id: @post.id}
-      expect (@user.favorites.find_by_post_id(@post.id)).not_to be_nil
+      expect(@user.favorites.find_by_post_id(@post.id)).not_to be_nil
     end
 
     describe "#destroy" do
