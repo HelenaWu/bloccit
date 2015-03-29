@@ -12,9 +12,8 @@
       Commented <%= time_ago_in_words(comment.created_at) %> ago
       <% end %>
       <% if policy(comment).destroy? %>
-        <%= link_to "Delete", [@post, comment], method: :delete %>
+        <%= link_to "Delete", [comment.post, comment], method: :delete %>
       <% end%>
-      
       <p>
       <%= comment.body %>
       <em>  By: 
