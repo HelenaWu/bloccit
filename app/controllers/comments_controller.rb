@@ -6,8 +6,6 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @topic = @post.topic
     @comments = @post.comments
-    # for some reason comment_params was not recognized
-    # @comment = Comment.new(body: params[:comment][:body])
     @comment = Comment.new(comment_params)
 
     @comment.post = @post
