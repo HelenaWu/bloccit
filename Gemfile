@@ -16,15 +16,14 @@ gem 'mini_magick', '~> 3.5.0'
 gem 'fog'
 gem 'will_paginate', '~>3.0.5'
 gem 'newrelic_rpm'
+gem 'factory_girl_rails', '~> 4.0'
 gem 'puma'
 
-group :production do
-  gem 'puma'
+group :production do  
   gem 'pg'
   gem 'rails_12factor'
 end
 group :development do
-  gem 'puma'
   gem 'rails-erd'
   gem 'sqlite3'
 end

@@ -1,13 +1,11 @@
 require 'rails_helper'
 
 describe FavoritesController do
-  include TestFactories
   include Devise::TestHelpers
 
   before do
-    @post = associated_post
-    #Adding a new email address, default getting: "email has already been taken" error
-    @user = authenticated_user(email: 'email#{rand}@example.com')
+    @post = create(:post)
+    @user = create(:user)
     sign_in @user
   end
 
