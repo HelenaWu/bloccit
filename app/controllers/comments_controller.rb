@@ -7,8 +7,8 @@ class CommentsController < ApplicationController
     @topic = @post.topic
     @comments = @post.comments
     @comment = Comment.new(comment_params)
-
     @comment.post = @post
+    @new_comment = Comment.new
     if current_user
       @comment.user = current_user
     end
@@ -16,11 +16,16 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash[:notice] = "comment was saved successfully."
-      redirect_to topic_post_url(@topic, @post)
+      # redirect_to topic_post_url(@topic, @post)
     else      
       flash[:error] = "There was an error saving the comment. Please try again."
       # redirect_to topic_post_url(@topic, @post)
-      render "posts/show"
+      # render "posts/show"
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 

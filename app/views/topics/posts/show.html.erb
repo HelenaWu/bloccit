@@ -9,17 +9,15 @@
         <%= @post.user.name %>
     </small>
     <p><%= markdown_to_html @post.body %></p>
-    <div>
-      <h4>Comments:</h4>
-      <p> 
+    <h4>Comments:</h4>
+    <div class="js-comments"> 
       <%= render partial: 'comments/comment', collection: @comments %>
-      </p>
     </div>  
-    <p>
+    <div class="new-comment">
       <% if policy(@comment).create? %>
       <%= render partial: 'comments/form', locals: {topic: @topic, post: @post, comment: @comment}%>
       <% end %>
-    </p>
+    </div>
 
   </div>
 
