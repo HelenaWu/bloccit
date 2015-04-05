@@ -24,10 +24,11 @@
 #       body: "A Comment!", 
 #       post: associated_post
 #     }.merge(options)
-   
-#     comment = Comment.new(comment_options)
-#     allow(comment).to receive(:send_favorite_emails)
-#     comment.save
-#     comment
+
+#    Comment.create!(comment_options) #using create! when testing so tests fail loudly if validation error
+#     #comment = Comment.new(comment_options)
+#     #allow(comment).to receive(:send_favorite_emails)
+#     #comment.save
+#     #comment
 #   end
 # end

@@ -6,10 +6,15 @@ module Paginate
 
   module ClassMethods
     def paginate(options)
-      per_page = options[:per_page]
+      per_page_num = options[:per_page]
       page = (options[:page] || 0).to_i
 
-      return self.limit(per_page).offset(page * per_page)
+      results = self.limit(per_page_num).offset(page * per_page_num)
+      #Ruby allows dynamic definition of a method on an object
+      def results.per_page
+        per_page_num #Can't find this variable?
+      end
+      results
     end
   end
 end

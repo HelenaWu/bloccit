@@ -8,8 +8,8 @@ class Topics::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @topic = @post.topic
     authorize @topic
-    @comment = Comment.new #if policy(@comment).new?  error: unable to find policy for nil class
-    authorize @comment, :new?
+    #fix comment view policy issue when user not logged in
+    @comment = Comment.new 
     @comments = @post.comments
 
   end

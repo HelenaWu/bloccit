@@ -21,3 +21,6 @@
 
 #Carrierwave image
 public/uploads
+
+#ignore all .DS_store files
+.DS_Store

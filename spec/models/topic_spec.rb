@@ -26,7 +26,8 @@ describe Topic do
         expect(Topic.visible_to(user)).to eq([@public_topic,@private_topic])
       end
       it "returns only public topics if user is nil" do
-        expect(Topic.visible_to(nil).first).to eq(@public_topic)
+        #fix incomplete test where private topics coul
+        expect(Topic.visible_to(nil)).to eq([@public_topic])
       end
     end
   end  

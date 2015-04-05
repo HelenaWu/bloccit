@@ -18,11 +18,13 @@ module ApplicationHelper
   end
 
   def up_vote_link_classes(post)
-    result = "glyphicon glyphicon-chevron-up " +  ((current_user.voted(post) && current_user.voted(post).up_vote?) ? 'voted' : '')
+    vote = current_user.voted(post)
+    "glyphicon glyphicon-chevron-up " +  ((vote && vote.up_vote?) ? 'voted' : '')
   end
   
   def down_vote_link_classes(post)
-    result = "glyphicon glyphicon-chevron-down " +  ((current_user.voted(post) && current_user.voted(post).down_vote?) ? 'voted' : '')
+    vote = current_user.voted(post) 
+    "glyphicon glyphicon-chevron-down " +  ((vote && vote.down_vote?) ? 'voted' : '')
   end
   
   # def will_paginate(results)
@@ -34,7 +36,7 @@ module ApplicationHelper
   #     total_count = model_class.count
   #   end
   #   curr_page = (params[:page] || 0).to_i
-  #   per_page = 10 #how to get per_page dynamically?
+  #   per_page = results.per_page #call the per_page method we defined
   #   total_pages = total_count/per_page
   #   next_page = curr_page + 1
   #   prev_page = curr_page - 1
@@ -46,9 +48,8 @@ module ApplicationHelper
   #   if prev_page >0
   #     result = result + " #{link_to "Prev", "?page=#{prev_page}"}"
   #   end
-   
-  #   return result.html_safe
-     
+
+  #   return result.html_safe 
   # end
 
 end
