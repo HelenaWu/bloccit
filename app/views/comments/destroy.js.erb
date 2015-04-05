@@ -2,5 +2,6 @@
   $("#comment-" + <%= @comment.id %>).fadeOut("slow");
   $('.js-comments-count').html("<%=pluralize(@comment.user.comments.count, 'comment') %>");
 <% else %>
-  $("#comment-" + <%= @comment.id %>).prepend("<div class='alert alert-danger'><%= flash[:error]='There was an error.' %></div>");
+  //changed flash[:error] to flash.discard to ensure given message is displayed once
+  $("#comment-" + <%= @comment.id %>).prepend("<div class='alert alert-danger'><%= flash.discard(:error) %></div>");
 <% end %>

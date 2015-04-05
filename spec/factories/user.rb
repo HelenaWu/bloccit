@@ -13,9 +13,11 @@ FactoryGirl.define do
 
       after(:build) do |user, evaluator|
         post = create(:post, user: user)
-        evaluator.num_comments.times  {
-          comment = create(:comment, user: user, post: post)
-        }
+        #Alternative solution
+        create_list(:comment, evaluator.num_comments, user: user, post: post)
+        # evaluator.num_comments.times  {
+          # comment = create(:comment, user: user, post: post)
+        # }
       end
     end
   end
